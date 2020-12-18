@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 
+    1 kilo = 3€ | Hasta 3 kilos = 5€ | Hasta 10 kilos = 10€ | Hasta 20 kilos = 15€
+    Recogida = código postal, calle y número de casa.
+    Destino = código postal, calle y número de casa.
+    Precio extra baleares y canarias = 5€ -->
+</head>
+<script>
+    function calculo() {
+        var unidades = calculos.unidades.value
+        var tamañocajas = document.getElementById("cajas").value;
+        if (tamañocajas === "1") {
+            document.getElementById("salida").innerHTML = (3 * unidades);
+        }
+        if (tamañocajas === "2") {
+            document.getElementById("salida").innerHTML = (5 * unidades);
+        }
+        if (tamañocajas === "3") {
+            document.getElementById("salida").innerHTML = 10 * unidades;
+        }
+        if (tamañocajas === "4") {
+            document.getElementById("salida").innerHTML = 15 * unidades;
+        }
+    }
+</script>
+<body>
+<form name="destinoenvio">
+    <h3>RECOGIDA</h3>
+    Código postal <input type="text" maxlength="5" name="cp" placeholder="Ejemplo: 07005">
+    <br>
+    Calle y número <input type="text" size="20" name="calle" placeholder="Ejemplo: Aragón, 8">
+    <h3>DESTINO</h3>
+    Código postal <input type="text" maxlength="5" name="cp" placeholder="Ejemplo: 08005">
+    <br>
+    Calle y número <input type="text" size="20" name="calle" placeholder="Ejemplo: Carrer d'Àvila, 10">
+    <br><br>
+    <button class="siguiente">SIGUIENTE</button>
+</form>
+
+<form name="calculos">
+    Seleccione el tamaño de la caja: 
+    <select id="cajas" onchange="calculo()">
+        <option value="1">Sobre (hasta 1kg)</option>        <option value="2">Mini caja (hasta 3kg)</option>
+        <option value="3">Caja (hasta 10kg)</option>
+        <option value="4">Caja grande (hasta 20kg)</option>
+    </select>
+    <br>
+    Unidades: <input type="text" size="1" maxlength="1" name="unidades">
+    <br>
+    Precio final en euros: <div id="salida"></div>
+    <button class="atrás">ATRÁS</button>  
+</form>
+</body>
+</html>
